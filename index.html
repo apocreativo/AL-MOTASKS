@@ -12,6 +12,18 @@
     </header>
 
     <main>
+        <!-- Section for adding new users -->
+        <section id="user-manager">
+            <h2>Add User</h2>
+            <form id="create-user-form">
+                <input type="text" id="user-name" placeholder="User Name" required>
+                <button type="submit">Add User</button>
+            </form>
+            <ul id="user-list">
+                <!-- User names will appear here -->
+            </ul>
+        </section>
+
         <!-- Section for creating a new board -->
         <section id="board-creator">
             <h2>Create New Board</h2>
@@ -26,7 +38,10 @@
             <h2>Create New Task</h2>
             <form id="create-task-form">
                 <input type="text" id="task-title" placeholder="Task Title" required>
-                <input type="text" id="task-assigned" placeholder="Assigned To">
+                <!-- Assigned user selector populated dynamically; includes unassigned option -->
+                <select id="task-user">
+                    <option value="">Unassigned</option>
+                </select>
                 <input type="date" id="task-due">
                 <!-- Board selector populated dynamically -->
                 <select id="task-board"></select>

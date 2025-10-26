@@ -1,17 +1,22 @@
 /* Global styles */
+/* Use a clean, modern font and subtle background for the entire page */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f2f5;
+    background-color: #f5f7fa;
     color: #333;
+    line-height: 1.5;
 }
 
+/* Make the app title bar more eye‑catching with a gentle gradient */
 header {
-    background-color: #2f8ee5;
-    color: white;
+    background: linear-gradient(90deg, #49a6e9, #46a5e5);
+    color: #ffffff;
     padding: 20px;
     text-align: center;
+    font-size: 1.8rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 main {
@@ -30,25 +35,26 @@ form {
 }
 
 input, select, textarea, button {
-    padding: 8px;
+    padding: 10px;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid #cfd6e1;
     font-size: 14px;
 }
 
 button {
-    background-color: #2f8ee5;
-    color: white;
+    background-color: #007acc;
+    color: #fff;
     cursor: pointer;
     border: none;
     transition: background-color 0.2s ease;
+    border-radius: 4px;
 }
 
 button:hover {
-    background-color: #2774b8;
+    background-color: #005fa3;
 }
 
-/* Boards container uses flexbox to lay boards side by side */
+/* Boards container uses flexbox to lay boards side by side and allow horizontal scrolling on small screens */
 #boards-container {
     display: flex;
     flex-wrap: wrap;
@@ -56,54 +62,69 @@ button:hover {
     align-items: flex-start;
 }
 
-/* Individual board styling */
+/* Individual board styling. Each board uses a CSS variable
+   `--board-color` provided by the script to colour its header and
+   left border on its tasks. The top border is thicker and the header
+   has a coloured background reminiscent of monday.com. */
 .board {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    --board-color: #46a5e5;
+    background-color: #ffffff;
+    border: 1px solid #e1e7ed;
+    border-top: 6px solid var(--board-color);
+    border-radius: 8px;
     width: 300px;
-    min-height: 100px;
+    min-height: 120px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
 }
 
 .board h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin: -10px -10px 10px -10px;
+    padding: 10px;
     text-align: center;
+    background-color: var(--board-color);
+    color: #ffffff;
+    border-radius: 4px 4px 0 0;
+    font-size: 1.1rem;
 }
 
-/* Task card styling */
+/* Task card styling. Each card inherits the board colour via CSS
+   variable. A coloured strip on the left helps group tasks visually. */
 .task-card {
-    background-color: #f7f9fc;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    background-color: #f9fbfe;
+    border: 1px solid #e1e7ed;
+    border-left: 5px solid var(--board-color);
+    border-radius: 6px;
     padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
+    margin-bottom: 12px;
     position: relative;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .task-card h4 {
     margin: 0;
     margin-bottom: 5px;
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .task-card p {
     margin: 2px 0;
-    font-size: 13px;
+    font-size: 0.85rem;
+    color: #555;
 }
 
-/* Container for task action buttons and board selector */
+/* Container for task action buttons and selectors */
 .task-actions {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+    gap: 6px;
 }
 
 .task-actions button {
@@ -112,7 +133,7 @@ button:hover {
     border: none;
     padding: 4px 8px;
     border-radius: 4px;
-    font-size: 0.8em;
+    font-size: 0.75rem;
     transition: background-color 0.2s ease;
 }
 
@@ -124,11 +145,181 @@ button:hover {
     width: 100%;
     margin-top: 5px;
     padding: 4px;
-    font-size: 0.9em;
+    font-size: 0.85rem;
+    border: 1px solid #cfd6e1;
+    border-radius: 4px;
 }
 
 textarea {
     resize: vertical;
     min-height: 60px;
     max-width: 100%;
+}
+
+/* User manager styles */
+#user-manager ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+#user-manager li {
+    margin-bottom: 5px;
+    padding: 5px 8px;
+    background-color: #eef3f8;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* Sub-items list inside tasks */
+.sub-items {
+    margin-top: 10px;
+    border-top: 1px solid #e5eaf0;
+    padding-top: 8px;
+}
+
+.sub-items h5 {
+    margin: 0 0 5px 0;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.sub-items ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 5px 0;
+}
+
+.sub-items li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.sub-items li input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+.sub-items li span {
+    flex-grow: 1;
+    font-size: 0.8rem;
+}
+
+.sub-items li button {
+    background-color: transparent;
+    border: none;
+    color: #888;
+    font-size: 0.7rem;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.sub-items li button:hover {
+    color: #555;
+}
+
+.add-item-form {
+    display: flex;
+    gap: 5px;
+}
+
+.add-item-form input {
+    flex-grow: 1;
+    padding: 5px;
+    font-size: 0.8rem;
+    border: 1px solid #cfd6e1;
+    border-radius: 3px;
+}
+
+.add-item-form button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    background-color: #007acc;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.add-item-form button:hover {
+    background-color: #005fa3;
+}
+
+/* Edit task form inside cards */
+.edit-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 5px;
+}
+
+.edit-task-form input,
+.edit-task-form select,
+.edit-task-form textarea {
+    padding: 6px;
+    font-size: 0.8rem;
+    border: 1px solid #cfd6e1;
+    border-radius: 4px;
+}
+
+.edit-task-form textarea {
+    resize: vertical;
+    min-height: 50px;
+}
+
+.edit-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.edit-buttons button {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+}
+
+.save-task {
+    background-color: #007acc;
+    color: white;
+}
+
+.save-task:hover {
+    background-color: #005fa3;
+}
+
+.cancel-edit {
+    background-color: #e0e4ea;
+    color: #333;
+}
+
+.cancel-edit:hover {
+    background-color: #d0d4db;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 600px) {
+    #boards-container {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    .board {
+        width: 260px;
+        flex-shrink: 0;
+    }
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    input, select, textarea, button {
+        width: 100%;
+    }
+    .task-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
 }
