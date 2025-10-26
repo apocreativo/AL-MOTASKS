@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login – AL&amp;MO TASKS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Simple styling for the auth pages reusing the main palette */
+        .auth-container {
+            max-width: 400px;
+            margin: 60px auto;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #e1e7ed;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .auth-container h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .auth-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .auth-container input, .auth-container button {
+            padding: 10px;
+            font-size: 1rem;
+        }
+        .auth-container a {
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AL&amp;MO TASKS</h1>
+    </header>
+    <div class="auth-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <a href="register.html">Don't have an account? Register</a>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('login-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    localStorage.setItem('userId', data.userId);
+                    localStorage.setItem('userName', data.name);
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert(data.message || 'Login failed');
+                }
+            } catch (err) {
+                alert('Network error');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

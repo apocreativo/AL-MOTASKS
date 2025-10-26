@@ -11,7 +11,8 @@ body {
 
 /* Make the app title bar more eye‑catching with a gentle gradient */
 header {
-    background: linear-gradient(90deg, #49a6e9, #46a5e5);
+    /* Dark blue gradient inspired by the AL&MO login page */
+    background: linear-gradient(90deg, #0d1a2a, #1d2f4f);
     color: #ffffff;
     padding: 20px;
     text-align: center;
@@ -42,7 +43,7 @@ input, select, textarea, button {
 }
 
 button {
-    background-color: #007acc;
+    background-color: #0d1a2a; /* dark navy similar to login design */
     color: #fff;
     cursor: pointer;
     border: none;
@@ -51,7 +52,7 @@ button {
 }
 
 button:hover {
-    background-color: #005fa3;
+    background-color: #113357;
 }
 
 /* Boards container uses flexbox to lay boards side by side and allow horizontal scrolling on small screens */
@@ -235,7 +236,7 @@ textarea {
 .add-item-form button {
     padding: 5px 10px;
     font-size: 0.8rem;
-    background-color: #007acc;
+    background-color: #0d1a2a;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -243,7 +244,7 @@ textarea {
 }
 
 .add-item-form button:hover {
-    background-color: #005fa3;
+    background-color: #113357;
 }
 
 /* Edit task form inside cards */
@@ -283,12 +284,12 @@ textarea {
 }
 
 .save-task {
-    background-color: #007acc;
+    background-color: #0d1a2a;
     color: white;
 }
 
 .save-task:hover {
-    background-color: #005fa3;
+    background-color: #113357;
 }
 
 .cancel-edit {
