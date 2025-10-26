@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AL&amp;MO TASKS</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <h1>AL&amp;MO TASKS</h1>
+    </header>
+
+    <main>
+        <!-- Section for creating a new board -->
+        <section id="board-creator">
+            <h2>Create New Board</h2>
+            <form id="create-board-form">
+                <input type="text" id="board-name" placeholder="Board Name" required>
+                <button type="submit">Add Board</button>
+            </form>
+        </section>
+
+        <!-- Section for creating a new task -->
+        <section id="task-creator">
+            <h2>Create New Task</h2>
+            <form id="create-task-form">
+                <input type="text" id="task-title" placeholder="Task Title" required>
+                <input type="text" id="task-assigned" placeholder="Assigned To">
+                <input type="date" id="task-due">
+                <!-- Board selector populated dynamically -->
+                <select id="task-board"></select>
+                <textarea id="task-desc" placeholder="Description"></textarea>
+                <button type="submit">Add Task</button>
+            </form>
+        </section>
+
+        <!-- Container that holds all boards -->
+        <section id="boards-container">
+            <!-- Boards will be injected here by script.js -->
+        </section>
+    </main>
+
+    <!-- Include our script at the end of the body -->
+    <script src="script.js"></script>
+</body>
+</html>
